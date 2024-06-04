@@ -2,23 +2,23 @@ package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDao;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
+import jm.task.core.jdbc.service.UserService;
+import jm.task.core.jdbc.service.UserServiceImpl;
 
 import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
         // реализуйте алгоритм здесь
-        UserDao userDao = new UserDaoJDBCImpl();
-        userDao.createUsersTable();
+        UserService userService = new UserServiceImpl();
+        userService.createUsersTable();
 
-        userDao.saveUser("misha", "ivanov", (byte) 28);
-        userDao.saveUser("anna", "ivanova", (byte) 26);
-        userDao.saveUser("alex", "petrov", (byte) 56);
-        userDao.saveUser("Chippi", "Chappa", (byte) 1);
-
-        System.out.println(userDao.getAllUsers().toString());
-
-        userDao.cleanUsersTable();
-        userDao.dropUsersTable();
+        userService.saveUser("misha", "ivanov", (byte) 28);
+        userService.saveUser("anna", "ivanova", (byte) 26);
+        userService.saveUser("alex", "petrov", (byte) 56);
+        userService.saveUser("Chippi", "Chappa", (byte) 1);
+        userService.getAllUsers();
+        userService.cleanUsersTable();
+        userService.dropUsersTable();
     }
 }
